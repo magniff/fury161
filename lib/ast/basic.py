@@ -50,11 +50,11 @@ class Loop(BaseASTNode):
     def __eq__(self, other):
         return type(self) == type(other) and self.contains == other.contains
 
-    def to_bf_code(self):
-        return '[%s]' % ''.join(node.to_bf_code() for node in self.contains)
-
     def __init__(self, contains):
         self.contains = contains
+
+    def to_bf_code(self):
+        return '[%s]' % ''.join(node.to_bf_code() for node in self.contains)
 
 
 class Program(Loop):

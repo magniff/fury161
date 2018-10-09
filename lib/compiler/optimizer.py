@@ -35,14 +35,12 @@ def optimize_add(node):
 
 
 def optimize_drop(loop_node):
-    pattern = [Dec(1),]
+    pattern = [Dec(1)]
     if pattern == loop_node.contains:
         return Drop()
 
 
-OPTIMIZATIONS = [
-    optimize_add, optimize_drop,
-]
+OPTIMIZATIONS = [optimize_add, optimize_drop]
 
 
 def optimize(node):
@@ -60,4 +58,3 @@ def optimize(node):
         return Loop(
             contains=[optimize(subnode) for subnode in node.contains]
         )
-
